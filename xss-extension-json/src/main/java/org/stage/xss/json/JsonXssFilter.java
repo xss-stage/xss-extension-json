@@ -1,5 +1,8 @@
 package org.stage.xss.json;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.stage.xss.core.spi.XssFilter;
@@ -13,6 +16,8 @@ public class JsonXssFilter implements XssFilter{
     public JsonXssFilter(){
         objectMapper = new ObjectMapper();
         objectMapper.getFactory().setCharacterEscapes(new XssCharacterEscapes());
+        objectMapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
+        objectMapper.setVisibility(PropertyAccessor.CREATOR, Visibility.ANY);
     }
 
     @Override
