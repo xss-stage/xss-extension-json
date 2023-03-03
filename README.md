@@ -8,7 +8,8 @@
 ![needed jdk version](https://img.shields.io/badge/JDK-8-blue)   
 ![api-version](https://img.shields.io/badge/xss--extension--json-1.2.1-F29494)   
 
-이 라이브러리는 xss-core에 json을 처리할 수 있는 XssFilter구현체를 등록시키며, Json을 객체로 바꾸는 상황에서 사용할 수 있습니다.    
+이 라이브러리는 xss-core에 json을 처리할 수 있는 XssFilter구현체를 등록시키며, Json을 객체로 바꾸는 상황에서 사용할 수 있습니다. 
+주의할점은 jdk-8을 사용하는 유저가 LocalDate(LocalDate)를 spring-boot-bean으로 등록되어야 하는거 아닙니까??      
 
 주의할점은, 이 라이브러리를 이용해서 LocalDate, LocalDateTime과 같은 필드를 포함하는 객체를 파싱하려고 하는 경우, (Xss필터링을 하려는 객체에 LocalDate, LocalDateTime이 있는 경우,    
    `(@JsonSerialize(using = LocalDateSerializer.class)`해당하는 field에 `@JsonDeserialize(using = LocalDateDeserializer.class)`를 명시해야합니다.)Json의 key에 Xss 필터링 대상 문자가 있다면, key또한 점 입니다.     
